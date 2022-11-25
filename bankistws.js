@@ -46,7 +46,7 @@ document.addEventListener('keydown', function (event) {
 //1. add event listener to common parent element
 //2. determine what element originated the event
 document.querySelector('.nav__links').addEventListener('click', function (e) {
-  e.preventDefault(); 
+  e.preventDefault();
 
   // 3. matching strategy
   if (e.target.classList.contains('nav__link')) {
@@ -61,7 +61,7 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 //. TABBED COMPONENT
 tabsContainer.addEventListener('click', function (e) {
   const clicked = e.target.closest('.operations__tab');
-  if (!clicked) return; 
+  if (!clicked) return;
 
   tabs.forEach((t) => t.classList.remove('operations__tab--active'));
   tabsContent.forEach((c) => c.classList.remove('operations__content--active'));
