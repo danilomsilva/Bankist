@@ -1,8 +1,5 @@
 'use strict';
 
-///////////////////////////////////////
-// Modal window
-
 //. DOM ELEMENTS
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
@@ -21,11 +18,12 @@ const header = document.querySelector('.header');
 
 //. OPEN MODAL
 const openModal = function (e) {
-  //prevent # jumping to the master top
   e.preventDefault();
   modal.classList.remove('hidden');
   overlay.classList.remove('hidden');
 };
+
+//. ADDS EVENTLISTENER TO ALL BUTTONS
 btnsOpenModal.forEach((btn) => btn.addEventListener('click', openModal));
 
 //. CLOSE MODAL
@@ -37,35 +35,18 @@ const closeModal = function () {
 btnCloseModal.addEventListener('click', closeModal);
 overlay.addEventListener('click', closeModal);
 
+//. KEYBOARD
 document.addEventListener('keydown', function (event) {
   if (event.key === 'Escape' && !modal.classList.contains('hidden')) {
     closeModal();
   }
 });
 
-//. SCROLLING
-// btnScrollTo.addEventListener('click', function (e) {
-//   const s1coords = section1.getBoundingClientRect();
-//   section1.scrollIntoView({ behavior: 'smooth' });
-// });
-
-//. PAGE NAVIGATION - SMOOTH
-// document.querySelectorAll('.nav__link').forEach(function (el) {
-//   el.addEventListener('click', function (e) {
-//     e.preventDefault(); //stops scrolling to the anchors (section)
-//     const id = this.getAttribute('href');
-//     console.log(id);
-//     document.querySelector(id).scrollIntoView({
-//       behavior: 'smooth',
-//     });
-//   });
-// });
-
 //. EVENT DELEGATION
 //1. add event listener to common parent element
 //2. determine what element originated the event
 document.querySelector('.nav__links').addEventListener('click', function (e) {
-  e.preventDefault(); //stops scrolling to the anchors (section)
+  e.preventDefault(); 
 
   // 3. matching strategy
   if (e.target.classList.contains('nav__link')) {
@@ -78,18 +59,16 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 });
 
 //. TABBED COMPONENT
-
 tabsContainer.addEventListener('click', function (e) {
   const clicked = e.target.closest('.operations__tab');
-  // guard clause
-  if (!clicked) return; //modern way
+  if (!clicked) return; 
 
   tabs.forEach((t) => t.classList.remove('operations__tab--active'));
   tabsContent.forEach((c) => c.classList.remove('operations__content--active'));
 
   clicked.classList.add('operations__tab--active');
 
-  //active content
+  //SELECT ACTIVE CONTENTQ
   document
     .querySelector(`.operations__content--${clicked.dataset.tab}`)
     .classList.add('operations__content--active');
@@ -111,14 +90,6 @@ const handleHover = function (e) {
 };
 nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
-
-//STICKY NAVIGATION
-//. BAD WAY BECAUSE SCROLL EVENT IS FIRED TOO MUCH TIME
-// const initialCoords = section1.getBoundingClientRect();
-// window.addEventListener('scroll', function (e) {
-//   if (window.scrollY > initialCoords.top) nav.classList.add('sticky');
-//   else nav.classList.remove('sticky');
-// });
 
 //. API STICKY - BETTER WAY OF DOING STICKY NAVIGATION
 const navHeight = nav.getBoundingClientRect().height;
