@@ -1,11 +1,15 @@
 # Bankist Business Website
 
-This project is a business website developed as part of the course: "The Complete JavaScript course 2022: From Zero to Expert" by Jonas Schmedtmann.
-All the credits should be given to the author.
-This is just a playground in which I could practice while learning JavaScript.
+This project was developed as part of the course: "The Complete JavaScript course 2022: From Zero to Expert" by Jonas Schmedtmann. All the credits should be given to the author.
 
-## Running the Website
+## What I learned
 
-Download the repository, extract the files and then open:
+Semantic HTML, advanced topics of CSS and DOM manipulation with JavaScript.
 
-### `index.html`
+## Running the project
+
+### Local
+Fork the repository, extract the files and then open: `index.html`
+
+### Live preview
+Alternatively, you can visualize the project by clicking in this link: https://danilomsilva-bankist.netlify.app/ 
